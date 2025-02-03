@@ -51,6 +51,10 @@
 
 #define unlikely(x) __builtin_expect(!!(x), 0)
 
+#ifndef HAL_PIXEL_FORMAT_R8
+#define HAL_PIXEL_FORMAT_R8 0x38
+#endif
+
 static std::unordered_map<buffer_handle_t, struct gbm_bo *> gbm_bo_handle_map;
 
 struct bo_data_t {
@@ -91,6 +95,9 @@ static uint32_t get_gbm_format(int format)
 		break;
 	case HAL_PIXEL_FORMAT_BGRA_8888:
 		fmt = GBM_FORMAT_ARGB8888;
+		break;
+	case HAL_PIXEL_FORMAT_R8:
+		fmt = GBM_FORMAT_R8;
 		break;
 	case HAL_PIXEL_FORMAT_YV12:
 		/* YV12 is planar, but must be a single buffer so ask for GR88 */
@@ -134,6 +141,7 @@ static int gralloc_gbm_get_bpp(int format)
 	case HAL_PIXEL_FORMAT_YCbCr_422_I:
 		bpp = 2;
 		break;
+	case HAL_PIXEL_FORMAT_R8:
 	/* planar; only Y is considered */
 	case HAL_PIXEL_FORMAT_YV12:
 	case HAL_PIXEL_FORMAT_YCbCr_422_SP:
