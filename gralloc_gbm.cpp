@@ -96,6 +96,7 @@ static uint32_t get_gbm_format(int format)
 	case HAL_PIXEL_FORMAT_BGRA_8888:
 		fmt = GBM_FORMAT_ARGB8888;
 		break;
+	case HAL_PIXEL_FORMAT_BLOB:
 	case HAL_PIXEL_FORMAT_R8:
 		fmt = GBM_FORMAT_R8;
 		break;
@@ -141,6 +142,7 @@ static int gralloc_gbm_get_bpp(int format)
 	case HAL_PIXEL_FORMAT_YCbCr_422_I:
 		bpp = 2;
 		break;
+	case HAL_PIXEL_FORMAT_BLOB:
 	case HAL_PIXEL_FORMAT_R8:
 	/* planar; only Y is considered */
 	case HAL_PIXEL_FORMAT_YV12:
