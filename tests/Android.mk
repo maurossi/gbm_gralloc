@@ -26,7 +26,7 @@ include $(LOCAL_PATH)/Makefile.sources
 
 LOCAL_SRC_FILES := $(GRALLOCTEST_FILES)
 
-LOCAL_MODULE := gralloctest
+LOCAL_MODULE := gralloctest_stride
 
 LOCAL_SHARED_LIBRARIES := \
 	libhardware \
